@@ -6,7 +6,7 @@ export default function AboutPage() {
         {/* HEADER */}
         <div className="mb-16 text-center">
           <h1 className="text-4xl font-bold text-gray-900">
-            About OpenQA IT Services
+            About Codmigo Solutions
           </h1>
           <p className="mt-4 text-lg text-gray-600">
             Scaling quality through automation, precision, and reliable testing practices.
@@ -19,7 +19,7 @@ export default function AboutPage() {
             Who We Are
           </h2>
           <p className="max-w-4xl text-gray-700 leading-7">
-            OpenQA IT Services is a quality-focused software testing and automation
+            Codmigo Solutions is a quality-focused software testing and automation
             company dedicated to helping businesses deliver reliable, scalable,
             and high-performing software products. We specialize in manual testing,
             automation testing, API testing, and QA process optimization.
@@ -32,7 +32,7 @@ export default function AboutPage() {
             Founder’s Story
           </h2>
           <p className="mb-4 max-w-4xl text-gray-700 leading-7">
-            OpenQA IT Services was founded by a passionate QA engineer
+            Codmigo Solutions was founded by a passionate QA engineer
             <span className="font-medium"> Ashish Jaishwal</span>, with over
             <span className="font-medium"> 8+ years of hands-on experience</span>
             in real-world software projects, automation frameworks, and modern
@@ -40,15 +40,15 @@ export default function AboutPage() {
           </p>
           <p className="max-w-4xl text-gray-700 leading-7">
             After working closely with development teams and witnessing how poor
-            testing impacts product quality and business trust, OpenQA was created
+            testing impacts product quality and business trust, Codmigo Solutions was created
             with a clear mission: to make quality a strength — not a bottleneck.
           </p>
         </section>
 
-        {/* WHY OPENQA */}
+        {/* WHY CODMIGO */}
         <section className="mb-16">
           <h2 className="mb-8 text-2xl font-semibold text-gray-900 text-center">
-            Why Choose OpenQA?
+            Why Choose Codmigo Solutions?
           </h2>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

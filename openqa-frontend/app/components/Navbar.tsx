@@ -9,18 +9,18 @@ export default function Navbar() {
         {/* Logo + Name */}
         <Link href="/" className="flex items-center gap-3">
           <Image
-            src="/logo.png"
-            alt="OpenQA IT Services"
+            src="/codmigo-logo.svg"
+            alt="Codmigo Solutions"
             width={48}
             height={48}
             priority
           />
           <div className="leading-tight">
             <h1 className="text-lg font-bold text-gray-900">
-              OpenQA IT Services
+              Codmigo Solutions
             </h1>
             <p className="text-xs text-gray-500">
-              Scaling Quality Through Automation
+              IT Services & Technology Consulting
             </p>
           </div>
         </Link>

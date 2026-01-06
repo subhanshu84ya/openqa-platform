@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <main style={{ padding: 40 }}>
-      <h1>OpenQA Platform</h1>
+      <h1>Codmigo Platform</h1>
       <p>Backend Status: {status}</p>
     </main>
   );

@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 export const metadata = {
-  title: "OpenQA IT Services",
+  title: "Codmigo Solutions – IT Services & Technology Consulting",
   description: "Scaling Quality Through Automation",
 };
 
@@ -14,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="flex min-h-screen flex-col">
+      <body suppressHydrationWarning className="flex min-h-screen flex-col">
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />

@@ -22,7 +22,7 @@ public class EmailService {
 
         SimpleMailMessage mail = new SimpleMailMessage();
         mail.setTo("openqaitservices@gmail.com");
-        mail.setSubject("New Contact Form Submission - OpenQA IT Services");
+        mail.setSubject("New Contact Form Submission - Codmigo Solutions");
 
         mail.setText(
                 "Name: " + name + "\n" +
