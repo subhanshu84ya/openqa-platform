@@ -2,6 +2,7 @@ package com.openqa.openqa_backend.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -41,7 +42,10 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(auth -> auth
 
-                        // ✅ PUBLIC ENDPOINTS (NO JWT REQUIRED)
+                        // ✅ ALLOW PREFLIGHT REQUESTS (FIXES 403)
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+
+                        // ✅ PUBLIC ENDPOINTS
                         .requestMatchers(
                                 "/api/auth/login",
                                 "/api/auth/register",
@@ -51,7 +55,7 @@ public class SecurityConfig {
                                 "/h2-console/**"
                         ).permitAll()
 
-                        // 🔐 EVERYTHING ELSE NEEDS JWT
+                        // 🔐 PROTECTED ENDPOINTS
                         .anyRequest().authenticated()
                 )
                 .authenticationProvider(authenticationProvider())
@@ -60,11 +64,11 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // ✅ CORS CONFIG (VERY IMPORTANT FOR FRONTEND)
+    // ✅ GLOBAL CORS CONFIG
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("*")); // frontend + Postman
+        config.setAllowedOrigins(List.of("*"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(false);
