@@ -31,6 +31,13 @@ public class EmailService {
                         "Message:\n" + message
         );
 
-        mailSender.send(mail);
+        // ✅ OPTION 2: SAFE EMAIL FAILURE HANDLING
+        try {
+            mailSender.send(mail);
+            System.out.println("✅ Contact email sent successfully");
+        } catch (Exception e) {
+            // ❗ Do NOT break API if email fails (Render blocks SMTP)
+            System.out.println("⚠️ Email sending failed, but contact saved in DB");
+        }
     }
 }
