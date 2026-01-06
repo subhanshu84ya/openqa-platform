@@ -1,7 +1,7 @@
 export default function AboutPage() {
   return (
     <main className="bg-slate-50">
-      <div className="mx-auto max-w-6xl px-6 py-20">
+      <div className="w-[85%] mx-auto py-20">
 
         {/* HEADER */}
         <div className="mb-16 text-center">

@@ -105,7 +105,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
   return (
     <section className="bg-slate-50">
-      <div className="mx-auto max-w-6xl px-6 py-20">
+      <div className="w-[85%] mx-auto py-20">
         <div className="grid gap-10 md:grid-cols-2">
 
           {/* Info */}

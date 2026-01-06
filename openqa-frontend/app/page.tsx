@@ -5,7 +5,7 @@ export default function Home() {
     <main>
       {/* HERO */}
       <section className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
-        <div className="mx-auto max-w-7xl px-6 py-24 text-center">
+        <div className="w-[85%] mx-auto py-24 text-center">
           <h1 className="text-4xl font-bold md:text-5xl">
             Reliable Software Testing & QA Services
           </h1>
@@ -32,7 +32,7 @@ export default function Home() {
       </section>
 
       {/* SERVICES PREVIEW */}
-      <section className="mx-auto max-w-7xl px-6 py-20">
+      <section className="w-[85%] mx-auto py-20">
         <h2 className="text-center text-3xl font-bold">
           Our Testing Expertise
         </h2>
