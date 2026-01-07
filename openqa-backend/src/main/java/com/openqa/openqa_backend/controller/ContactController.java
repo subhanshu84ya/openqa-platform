@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/contact")
-@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001", "https://openqa-backend.onrender.com"})
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001", "https://openqa-backend.onrender.com", "https://openqa-platform.vercel.app"})
 public class ContactController {
 
     private final ContactMessageRepository repository;

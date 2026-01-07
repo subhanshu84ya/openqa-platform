@@ -7,8 +7,12 @@ export default function Home() {
   const [status, setStatus] = useState("Checking backend...");
 
   useEffect(() => {
-    api.get("/health")
-      .then((res) => setStatus(res))
+    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || "https://openqa-backend.onrender.com/api"}/health`)
+      .then(async (res) => {
+        if (!res.ok) throw new Error("Backend not connected");
+        const text = await res.text();
+        setStatus(text);
+      })
       .catch(() => setStatus("Backend not connected"));
   }, []);
 

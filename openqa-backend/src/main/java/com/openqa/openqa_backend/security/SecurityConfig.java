@@ -51,8 +51,7 @@ public class SecurityConfig {
                                 "/api/auth/register",
                                 "/api/contact",
                                 "/api/contact/**",
-                                "/api/health",
-                                "/h2-console/**"
+                                "/api/health"
                         ).permitAll()
 
                         // 🔐 PROTECTED ENDPOINTS

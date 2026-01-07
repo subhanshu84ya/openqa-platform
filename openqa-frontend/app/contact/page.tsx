@@ -80,7 +80,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   setLoading(true);
 
   try {
-    const res = await fetch(`/api/contact`, {
+    const res = await fetch(`https://openqa-backend.onrender.com/api/contact`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -115,9 +115,8 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               Codmigo Solutions helps you deliver quality software.
             </p>
             <ul className="space-y-3 text-gray-700">
-              <li>📧 openqaitservices@gmail.com</li>
-              <li>📞 +91-9795598160</li>
-              <li>🌍 India (Remote)</li>
+              <li>📧 info@Codmigo.com</li>
+              <li>🌍 India</li>
             </ul>
           </div>
 

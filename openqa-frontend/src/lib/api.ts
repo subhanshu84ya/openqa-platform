@@ -16,7 +16,7 @@ export const api = {
   },
 
   login: async (data: { username: string; password: string }) => {
-    const res = await fetch("http://openqa-backend.onrender.com/api/auth/login", {
+    const res = await fetch(`${API_BASE_URL}/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
