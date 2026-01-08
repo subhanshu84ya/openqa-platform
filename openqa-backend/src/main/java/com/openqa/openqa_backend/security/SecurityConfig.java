@@ -15,6 +15,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,7 +23,7 @@ import org.springframework.beans.factory.annotation.Value;
 @Configuration
 public class SecurityConfig {
 
-    @Value("${spring.web.cors.allowed-origins:*")
+    @Value("${spring.web.cors.allowed-origins:*}")
     private String allowedOrigins;
 
     @Value("${spring.web.cors.allowed-methods:GET,POST,PUT,DELETE,OPTIONS}")
@@ -34,10 +35,10 @@ public class SecurityConfig {
     private final JwtAuthFilter jwtAuthFilter;
     private final CustomUserDetailsService customUserDetailsService;
 
-    public SecurityConfig(JwtAuthFilter jwtAuthFilter,
-                          CustomUserDetailsService customUserDetailsService) {
-        this.jwtAuthFilter = jwtAuthFilter;
-        this.customUserDetailsService = customUserDetailsService;
+    public SecurityConfig(java.util.Optional<JwtAuthFilter> jwtAuthFilter,
+                          java.util.Optional<CustomUserDetailsService> customUserDetailsService) {
+        this.jwtAuthFilter = jwtAuthFilter.orElse(null);
+        this.customUserDetailsService = customUserDetailsService.orElse(null);
     }
 
     @Bean
@@ -67,8 +68,14 @@ public class SecurityConfig {
                         // 🔐 PROTECTED ENDPOINTS
                         .anyRequest().authenticated()
                 )
-                .authenticationProvider(authenticationProvider())
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+                    ;
+        if (this.customUserDetailsService != null) {
+            http = http.authenticationProvider(authenticationProvider());
+        }
+
+        if (this.jwtAuthFilter != null) {
+            http = http.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+        }
 
         return http.build();
     }
@@ -89,6 +96,7 @@ public class SecurityConfig {
     }
 
     @Bean
+    @ConditionalOnProperty(name = "app.db.enabled", havingValue = "true", matchIfMissing = false)
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setUserDetailsService(customUserDetailsService);

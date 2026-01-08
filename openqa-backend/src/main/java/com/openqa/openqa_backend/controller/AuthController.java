@@ -5,10 +5,12 @@ import com.openqa.openqa_backend.repository.UserRepository;
 import com.openqa.openqa_backend.security.JwtUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.Optional;
 
 @RestController
+@ConditionalOnProperty(name = "app.db.enabled", havingValue = "true", matchIfMissing = false)
 @RequestMapping("/api/auth")
 @CrossOrigin(origins = "*")
 public class AuthController {

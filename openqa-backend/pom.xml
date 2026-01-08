@@ -92,6 +92,9 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- H2 for local dev/profile backend -->
+
+
 		<!-- Mail -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
