@@ -80,7 +80,9 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   setLoading(true);
 
   try {
-    const res = await fetch(`https://openqa-backend.onrender.com/api/contact`, {
+    const API_URL = (process.env.NEXT_PUBLIC_API_URL as string) ?? "https://openqa-platform-dg4x.onrender.com";
+
+    const res = await fetch(`${API_URL}/api/contact`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
