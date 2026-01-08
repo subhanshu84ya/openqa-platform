@@ -2,7 +2,6 @@ package com.openqa.openqa_backend.controller;
 
 import com.openqa.openqa_backend.entity.ContactMessage;
 import com.openqa.openqa_backend.repository.ContactMessageRepository;
-import java.util.Optional;
 import com.openqa.openqa_backend.service.EmailService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +12,10 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 public class ContactController {
 
-    private final Optional<ContactMessageRepository> repository;
+    private final ContactMessageRepository repository;
     private final EmailService emailService;
 
-    public ContactController(Optional<ContactMessageRepository> repository,
+    public ContactController(ContactMessageRepository repository,
                              EmailService emailService) {
         this.repository = repository;
         this.emailService = emailService;
@@ -26,7 +25,7 @@ public class ContactController {
     public ResponseEntity<?> submitContact(
             @Valid @RequestBody ContactMessage message) {
 
-        repository.ifPresent(repo -> repo.save(message));
+        repository.save(message);
 
         // ✅ Send email
         emailService.sendContactEmail(
