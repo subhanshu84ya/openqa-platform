@@ -1,19 +1,15 @@
-# -------- Build stage --------
-FROM maven:3.9.6-eclipse-temurin-17 AS build
+FROM eclipse-temurin:17-jdk-alpine
 
 WORKDIR /app
 
 COPY . .
 
-RUN mvn clean package -DskipTests
+# Give execute permission to mvnw
+RUN chmod +x mvnw
 
-# -------- Runtime stage --------
-FROM eclipse-temurin:17-jre
-
-WORKDIR /app
-
-COPY --from=build /app/target/openqa-backend-0.0.1-SNAPSHOT.jar app.jar
+# Build the application
+RUN ./mvnw clean package -DskipTests
 
 EXPOSE 10000
 
-CMD ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "target/openqa-backend-0.0.1-SNAPSHOT.jar"]
